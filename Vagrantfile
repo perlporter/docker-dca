@@ -15,11 +15,11 @@ Vagrant.configure("2") do |config|
       machine.vm.box = "#{conf["image"]}"
       machine.vm.hostname = "#{name}.docker-dca.example"
       machine.vm.network "public_network", ip: "10.20.20.#{conf["ip"]}"
-      machine.vm.provider "vmware_desktop" do |vb|
-    #    vb.name = "#{name}"
-        vb.memory = conf["memory"]
-        vb.cpus = conf["cpu"]
-    #    vb.customize ["modifyvm", :id, "--groups", "/Docker-DCA"]
+      machine.vm.provider "vmware_desktop" do |vmware|
+    #    vmware.name = "#{name}"
+        vmware.memory = conf["memory"]
+        vmware.cpus = conf["cpu"]
+    #    vmware.customize ["modifyvm", :id, "--groups", "/Docker-DCA"]
       end
       machine.vm.provision "shell", path: "provision.sh"
     end
